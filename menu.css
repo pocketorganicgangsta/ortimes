@@ -1,0 +1,131 @@
+#header {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: fixed; /* 追尾させるために固定 */
+    top: 0; /* ページの上部に固定 */
+    left: 0; /* 左端に固定 */
+    z-index: 1000; /* 他の要素よりも前面に表示 */
+    background-color: #fff; /* 背景色を白に設定 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影を追加して立体感を演出 */
+    transition: top 0.3s ease-in-out; /* ヘッダーの動きをスムーズにするためのトランジション */
+}
+
+.header-ledt{
+	width: 25%;
+	float: left;
+	margin-left: 1%;
+	margin-top: 1%;
+	margin-bottom: .5%;
+}
+
+.header-ledt img{
+	width: 65%;
+	height: auto;
+	margin: 10px 0;
+}
+
+.header-right {
+    width: 70%;
+    float: right;
+}
+
+.header-right ul{
+	margin: 0;
+	overflow: hidden;
+	float: right;
+	width: 100%;
+	margin-top: 5%;
+}
+
+.header-right li {
+    margin: 0;
+    font-size: 13px;
+    float: left;
+    margin-right:0;
+    margin-left: 3%;
+    line-height: 1.5em;
+}
+
+.header-right-left {
+    float: left !important;
+    width: 70% !important;
+    margin-top: 6% !important;
+}
+
+.header-right-right{
+	float: right !important;
+	width: 25% !important;
+}
+
+.header-right a{
+	color: #000;
+	text-decoration: none;
+}
+
+.header-right a:hover{
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+
+#header{
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.header-ledt{
+	width: 74%;
+	float: left;
+	margin-left: 5%;
+	margin-top: 5%;
+}
+
+    .header-ledt img {
+        width: 65%;
+        height: auto;
+        margin: 0;
+}
+
+.header-right{
+	width: 70%;
+	float: right;
+}
+
+.header-right ul{
+	margin: 0;
+	overflow: hidden;
+	float: right;
+	width: 100%;
+	margin-top: 5.5%;
+}
+
+.header-right li{
+	margin: 0;
+	font-size: 14px;
+	float: left;
+	margin-right: 3%;
+	margin-left: 3%;
+}
+
+.header-right-left{
+	float: left !important;
+	width: 70% !important;
+}
+
+.header-right-right{
+	float: right !important;
+	width: 20% !important;
+}
+
+.header-right a{
+	color: #000;
+	text-decoration: none;
+}
+
+.header-right a:hover{
+	text-decoration: underline;
+}
+	
+}

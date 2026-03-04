@@ -1,0 +1,42 @@
+name: Daily Access Report
+
+on:
+  schedule:
+    # Asia/Bangkok (UTC+7) 08:00 = UTC 01:00
+    - cron: "0 1 * * *"
+  workflow_dispatch: # 手動実行ボタンも有効化
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily report
+        env:
+          # ── GA4（必須） ──────────────────────────────
+          GA4_PROPERTY_ID:          ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          # ── GSC（省略可） ─────────────────────────────
+          GSC_SITE_URL:             ${{ secrets.GSC_SITE_URL }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          # ── Gmail ────────────────────────────────────
+          GMAIL_FROM:               ${{ secrets.GMAIL_FROM }}
+          GMAIL_APP_PASSWORD:       ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO:                 ${{ secrets.GMAIL_TO }}
+          # ── オプション ────────────────────────────────
+          GA4_LIMIT:  "30"   # ページ別PV 表示件数
+          GSC_LIMIT:  "20"   # 検索クエリ 表示件数
+        run: python report.py
